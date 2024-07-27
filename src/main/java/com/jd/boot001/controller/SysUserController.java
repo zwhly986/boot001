@@ -29,7 +29,7 @@ public class SysUserController {
      */
     @RequestMapping(value = "/querySysUser", method = RequestMethod.GET)
     public List<SysUser> querySysUser() {
-        LOGGER.debug("querySysUser|用户列表查询0000");
+        LOGGER.info("querySysUser|用户列表查询88=======");
 //        log.debug("querySysUser|用户列表查询");
         return sysUserService.querySysUserList();
     }
