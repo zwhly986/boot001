@@ -17,6 +17,11 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/boot001?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
     username: root
     password: root
+  devtools:
+    restart:
+      enabled: true  # 热部署生效
+      additional-paths: scr/main/java  #设置重启目录
+      exclude: static  #设置class—path下的目录不重启
 
 # Mybatis配置
 mybatis:
