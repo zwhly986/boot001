@@ -27,7 +27,7 @@ mybatis:
 # 日志
 logging:
   file:
-    path: /logs/boot001/
+  # path: /logs/boot001/
   #   name: boot001
   level:
     root: INFO #DEBUG  当前项目的默认日志级别
