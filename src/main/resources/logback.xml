@@ -40,12 +40,35 @@ configuration作为logback的根节点有以下属性
         </encoder>
     </appender>
 
-    <!--只记录INFO级别的日志-->
-    <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 日志文件，各级别日志放在一个文件 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!--追加-->
         <append>true</append>
 
-        <!--过滤器,只记录INFO级别的日志-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <fileNamePattern>${LOG_HOME}/${APP_NAME}_%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!--日志文件保留天数-->
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>
+
+        <encoder charset="UTF-8">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread] %file:%line - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+
+        <!--日志文件最大的大小，注释掉，否则与TimeBasedRollingPolicy冲突，将其覆盖掉-->
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>10MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <!--只记录INFO级别的日志-->
+    <!--<appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        &lt;!&ndash;追加&ndash;&gt;
+        <append>true</append>
+
+        &lt;!&ndash;过滤器,只记录INFO级别的日志&ndash;&gt;
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>INFO</level>
             <onMatch>ACCEPT</onMatch>
@@ -53,9 +76,9 @@ configuration作为logback的根节点有以下属性
         </filter>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--日志文件输出的文件名-->
+            &lt;!&ndash;日志文件输出的文件名&ndash;&gt;
             <fileNamePattern>${LOG_HOME}/${APP_NAME}.%d{yyyy-MM-dd}-info.log</fileNamePattern>
-            <!--日志文件保留天数-->
+            &lt;!&ndash;日志文件保留天数&ndash;&gt;
             <maxHistory>5</maxHistory>
         </rollingPolicy>
 
@@ -64,18 +87,18 @@ configuration作为logback的根节点有以下属性
             <charset>UTF-8</charset>
         </encoder>
 
-        <!--日志文件最大的大小-->
+        &lt;!&ndash;日志文件最大的大小，注释掉，否则与TimeBasedRollingPolicy冲突，将其覆盖掉&ndash;&gt;
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>10MB</MaxFileSize>
         </triggeringPolicy>
-    </appender>
+    </appender>-->
 
     <!--只记录WARN级别的日志-->
-    <appender name="WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!--追加-->
+    <!--<appender name="WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        &lt;!&ndash;追加&ndash;&gt;
         <append>true</append>
 
-        <!--过滤器,只记录WARN级别的日志-->
+        &lt;!&ndash;过滤器,只记录WARN级别的日志&ndash;&gt;
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>WARN</level>
             <onMatch>ACCEPT</onMatch>
@@ -83,9 +106,9 @@ configuration作为logback的根节点有以下属性
         </filter>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--日志文件输出的文件名-->
+            &lt;!&ndash;日志文件输出的文件名&ndash;&gt;
             <fileNamePattern>${LOG_HOME}/${APP_NAME}.%d{yyyy-MM-dd}-warn.log</fileNamePattern>
-            <!--日志文件保留天数-->
+            &lt;!&ndash;日志文件保留天数&ndash;&gt;
             <maxHistory>30</maxHistory>
         </rollingPolicy>
 
@@ -94,18 +117,18 @@ configuration作为logback的根节点有以下属性
             <charset>UTF-8</charset>
         </encoder>
 
-        <!--日志文件最大的大小-->
+        &lt;!&ndash;日志文件最大的大小，注释掉，否则与TimeBasedRollingPolicy冲突，将其覆盖掉&ndash;&gt;
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>10MB</MaxFileSize>
         </triggeringPolicy>
-    </appender>
+    </appender>-->
 
     <!--过滤器,只记录ERROR级别的日志-->
-    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!--追加-->
+    <!--<appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        &lt;!&ndash;追加&ndash;&gt;
         <append>true</append>
 
-        <!--过滤器,只记录ERROR级别的日志-->
+        &lt;!&ndash;过滤器,只记录ERROR级别的日志&ndash;&gt;
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>ERROR</level>
             <onMatch>ACCEPT</onMatch>
@@ -113,9 +136,9 @@ configuration作为logback的根节点有以下属性
         </filter>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--日志文件输出的文件名-->
+            &lt;!&ndash;日志文件输出的文件名&ndash;&gt;
             <fileNamePattern>${LOG_HOME}/${APP_NAME}.%d{yyyy-MM-dd}-error.log</fileNamePattern>
-            <!--日志文件保留天数-->
+            &lt;!&ndash;日志文件保留天数&ndash;&gt;
             <maxHistory>30</maxHistory>
         </rollingPolicy>
 
@@ -124,20 +147,22 @@ configuration作为logback的根节点有以下属性
             <charset>UTF-8</charset>
         </encoder>
 
-        <!--日志文件最大的大小-->
+        &lt;!&ndash;日志文件最大的大小，注释掉，否则与TimeBasedRollingPolicy冲突，将其覆盖掉&ndash;&gt;
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>10MB</MaxFileSize>
         </triggeringPolicy>
-    </appender>
+    </appender>-->
 
-    <!-- 日志输出级别，INFO及以上的都会被输出 -->
-    <root level="INFO">
+    <!-- 日志输出级别，DEBUG及以上的都会被输出 -->
+    <root level="debug">
         <!--输出到控制台，生产环境这个可以注释掉-->
         <appender-ref ref="CONSOLE"/>
+        <!--输出到日志文件-->
+        <appender-ref ref="FILE"/>
         <!--保存到日志文件，测试这个可以注释掉-->
-        <appender-ref ref="INFO"/>
+        <!--<appender-ref ref="INFO"/>
         <appender-ref ref="WARN"/>
-        <appender-ref ref="ERROR"/>
+        <appender-ref ref="ERROR"/>-->
     </root>
 
 </configuration>
