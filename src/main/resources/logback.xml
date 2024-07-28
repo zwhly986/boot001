@@ -8,8 +8,10 @@ configuration作为logback的根节点有以下属性
 -->
 <configuration debug="false">
 
-    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-    <property name="LOG_HOME" value="D://logs"/>
+    <!--定义日志文件的存储地址，勿在 LogBack 的配置中使用相对路径，根据实际需要修改-->
+    <!--<property name="LOG_HOME" value="D://logs"/>-->
+    <property name="LOG_HOME" value="/logs/boot001"/> <!--自定义属性，后面用-->
+    <property name="APP_NAME" value="boot001"/> <!--自定义属性，后面用-->
 
     <!--
         appender: 有日志时, logback会将这个事件发送给appender
@@ -52,7 +54,7 @@ configuration作为logback的根节点有以下属性
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
-            <fileNamePattern>${LOG_HOME}/test.%d{yyyy-MM-dd}-info.log</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/${APP_NAME}.%d{yyyy-MM-dd}-info.log</fileNamePattern>
             <!--日志文件保留天数-->
             <maxHistory>5</maxHistory>
         </rollingPolicy>
@@ -82,7 +84,7 @@ configuration作为logback的根节点有以下属性
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
-            <fileNamePattern>${LOG_HOME}/test.%d{yyyy-MM-dd}-warn.log</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/${APP_NAME}.%d{yyyy-MM-dd}-warn.log</fileNamePattern>
             <!--日志文件保留天数-->
             <maxHistory>30</maxHistory>
         </rollingPolicy>
@@ -112,7 +114,7 @@ configuration作为logback的根节点有以下属性
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
-            <fileNamePattern>${LOG_HOME}/test.%d{yyyy-MM-dd}-error.log</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/${APP_NAME}.%d{yyyy-MM-dd}-error.log</fileNamePattern>
             <!--日志文件保留天数-->
             <maxHistory>30</maxHistory>
         </rollingPolicy>
