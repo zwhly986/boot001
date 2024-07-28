@@ -1,14 +1,13 @@
-server:
-  port: 8080  # 端口号
-  servlet:
-    context-path: /boot001   #项目根路径（前面必须加/）
-
+#server:
+#  port: 8080  # 端口号
+#  servlet:
+#    context-path: /boot001   #项目根路径（前面必须加/）
 
 spring:
   # 项目名称
-  application:
-    name: boot001
-  # 当前配置文件
+#  application:
+#    name: boot001
+#   当前配置文件
 #  profiles:
 #    active: dev
   # Mysql配置
@@ -27,8 +26,11 @@ mybatis:
 
 # 日志
 logging:
+  file:
+    path: /logs/boot001/
+  #   name: boot001
   level:
-    root: INFO #DEBUG
+    root: INFO #DEBUG  当前项目的默认日志级别
     com.jd.boot001.mapper: DEBUG   #设置MyBatis的具体日志级别，指定MyBatis Mapper接口所在的包路径
 #    path: /boot001/log   #只能指定路径，文件名默认为 spring.log，这里相当于window的 E:\boot001\log\spring.log
 #    name: /boot001/log/my.log  #可以指定文件路径和文件名，这里相当于window的 E:\boot001\log\my.log

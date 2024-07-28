@@ -6,8 +6,8 @@ server:
 
 spring:
   # 项目名称
-  application:
-    name: boot001
+#  application:
+#    name: boot001
   # 当前配置文件
 #  profiles:
 #    active: dev

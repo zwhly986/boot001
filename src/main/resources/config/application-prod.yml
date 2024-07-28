@@ -3,11 +3,10 @@ server:
   servlet:
     context-path: /boot001   #项目根路径（前面必须加/）
 
-
 spring:
   # 项目名称
-  application:
-    name: boot001
+#  application:
+#    name: boot001
   # 当前配置文件
 #  profiles:
 #    active: dev

@@ -3,7 +3,6 @@ server:
   servlet:
     context-path: /boot001   #项目根路径（前面必须加/）
 
-
 spring:
   # 项目名称
   application:
@@ -12,16 +11,17 @@ spring:
   profiles:
     active: dev
   # Mysql配置
-  datasource:
-    driver-class-name:  com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/boot001?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
-    username: root
-    password: root
+#  datasource:
+#    driver-class-name:  com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/boot001?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+#    username: root
+#    password: root
+  #devtools配置
   devtools:
     restart:
       enabled: true  # 热部署生效
-      additional-paths: scr/main/java  #设置重启目录
-      exclude: static  #设置class—path下的目录不重启
+#      additional-paths: scr/main/java  #设置重启目录
+      exclude: static  #static目录下文件修改不重启
 
 # Mybatis配置
 mybatis:
